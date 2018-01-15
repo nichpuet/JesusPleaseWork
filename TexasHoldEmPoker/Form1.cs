@@ -17,15 +17,23 @@ namespace TexasHoldEmPoker
         List<int> deckValue = new List<int>();
         List<string> deckSuit = new List<string>();
         List<int> p1Value = new List<int>();
-        List<String> p1Suit = new List<String>();
+        List<string> p1Suit = new List<string>();
         List<int> p2Value = new List<int>();
         List<string> p2Suit = new List<string>();
         List<int> p3Value = new List<int>();
         List<string> p3Suit = new List<string>();
         List<int> p4Value = new List<int>();
         List<string> p4Suit = new List<string>();
-
-        
+        List<int> flop1Value = new List<int>();
+        List<string> flop1Suit = new List<string>();
+        List<int> flop2Value = new List<int>();
+        List<string> flop2Suit = new List<string>();
+        List<int> flop3Value = new List<int>();
+        List<string> flop3Suit = new List<string>();
+        List<int> turnValue = new List<int>();
+        List<string> turnSuit = new List<string>();
+        List<int> riverValue = new List<int>();
+        List<string> riverSuit = new List<string>();
 
         Random rand = new Random();
 
@@ -59,6 +67,8 @@ namespace TexasHoldEmPoker
         }
         int balance = 100;
         int lastBet = 0;
+        int tempValue;
+        string tempSuit;
 
         private void playButton_Click(object sender, EventArgs e)
         {
@@ -155,10 +165,47 @@ namespace TexasHoldEmPoker
 
         }
 
+        private void CenterCards(int cardIdentifier)
+        {
+            int randGen = rand.Next(1, deckValue.Count + 1);
+
+            tempValue = deckValue[randGen];
+            tempSuit = deckSuit[randGen];
+
+                switch (cardIdentifier)
+                {
+                    case 1:
+                        flop1Value.Add(tempValue);
+                        flop1Suit.Add(tempSuit);
+                        break;
+
+                    case 2:
+                        flop2Value.Add(tempValue);
+                        flop2Suit.Add(tempSuit);
+                        break;
+
+                    case 3:
+                        flop3Value.Add(tempValue);
+                        flop3Suit.Add(tempSuit);
+                        break;
+
+                    case 4:
+                        turnValue.Add(tempValue);
+                        turnSuit.Add(tempSuit);
+                        break;
+
+                    case 5:
+                        riverValue.Add(tempValue);
+                        riverSuit.Add(tempSuit);
+                        break;         
+                }
+            
+
+        }
+
         private void DealHand(int player)
         {
-            int tempValue;
-            string tempSuit;
+
 
             switch (player)
             {
